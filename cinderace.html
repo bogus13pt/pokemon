@@ -3,25 +3,25 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Giratina — Coleção TCG</title>
+<title>Cinderace — Coleção TCG</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;900&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 <style>
 :root{
-  --coin-gold:#a78bfa;
-  --coin-gold-bright:#c4b5fd;
-  --ink-black:#0c0916;
-  --panel:#171227;
-  --panel2:#1f1832;
-  --panel3:#251d3c;
-  --parchment:#e3dcf5;
-  --ghost-teal:#14b8a6;
-  --ghost-teal-bright:#2dd4bf;
-  --border:rgba(167,139,250,0.16);
-  --border2:rgba(167,139,250,0.32);
-  --muted:#7c6f9c;
-  --muted2:#a99fc7;
-  --warn-red:#f43f5e;
+  --coin-gold:#dc2626;
+  --coin-gold-bright:#f87171;
+  --ink-black:#170707;
+  --panel:#251010;
+  --panel2:#2f1414;
+  --panel3:#3a1818;
+  --parchment:#f5e0d8;
+  --ghost-teal:#ea580c;
+  --ghost-teal-bright:#fb923c;
+  --border:rgba(220,38,38,0.16);
+  --border2:rgba(220,38,38,0.32);
+  --muted:#a36868;
+  --muted2:#d49a9a;
+  --warn-red:#b91c1c;
   --radius:8px;
   --card-w:190px;
   padding-top:env(safe-area-inset-top,0px);
@@ -32,8 +32,8 @@ html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px);}
 body{
   background:var(--ink-black);
   background-image:
-    radial-gradient(ellipse 90% 45% at 50% -5%, rgba(167,139,250,0.10) 0%, transparent 60%),
-    radial-gradient(circle at 88% 20%, rgba(20,184,166,0.08), transparent 45%);
+    radial-gradient(ellipse 90% 45% at 50% -5%, rgba(220,38,38,0.10) 0%, transparent 60%),
+    radial-gradient(circle at 88% 20%, rgba(234,88,12,0.08), transparent 45%);
   color:var(--parchment);
   font-family:"EB Garamond","Iowan Old Style","Palatino Linotype",Georgia,serif;
   line-height:1.5;
@@ -49,7 +49,7 @@ header.hero{
   padding:3.5rem 1.5rem 2.5rem;
   text-align:center;
   border-bottom:2px solid var(--coin-gold);
-  box-shadow:0 4px 40px rgba(167,139,250,0.12);
+  box-shadow:0 4px 40px rgba(220,38,38,0.12);
 }
 .eyebrow{
   font-family:"Cinzel",serif;
@@ -59,13 +59,13 @@ header.hero{
   text-transform:uppercase;
   color:var(--ghost-teal-bright);
   margin-bottom:0.8rem;
-  text-shadow:0 0 18px rgba(45,212,191,0.4);
+  text-shadow:0 0 18px rgba(248,113,113,0.4);
 }
 h1.display{
   font-size:clamp(2.1rem, 6vw, 3.4rem);
   margin:0 0 0.5rem;
   color:var(--coin-gold-bright);
-  text-shadow:0 0 30px rgba(196,181,253,0.25);
+  text-shadow:0 0 30px rgba(248,113,113,0.25);
 }
 .subtitle{
   max-width:620px;
@@ -89,8 +89,8 @@ h1.display{
 }
 .stat{flex:1;padding:0.7rem 0.5rem;text-align:center;border-right:1px solid var(--border);}
 .stat:last-child{border-right:none;}
-.stat-val{font-family:"Cinzel",serif;font-size:1.5rem;font-weight:700;line-height:1;color:var(--coin-gold-bright);text-shadow:0 0 14px rgba(196,181,253,0.35);}
-.stat-val.teal{color:var(--ghost-teal-bright);text-shadow:0 0 14px rgba(45,212,191,0.35);}
+.stat-val{font-family:"Cinzel",serif;font-size:1.5rem;font-weight:700;line-height:1;color:var(--coin-gold-bright);text-shadow:0 0 14px rgba(248,113,113,0.35);}
+.stat-val.teal{color:var(--ghost-teal-bright);text-shadow:0 0 14px rgba(248,113,113,0.35);}
 .stat-lbl{font-size:0.62rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);margin-top:0.25rem;}
 
 /* ── CONTROLS ── */
@@ -143,7 +143,7 @@ main{max-width:1200px;margin:0 auto;padding:0.5rem 1.5rem 3rem;}
 }
 @keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 .card:hover{transform:translateY(-4px);}
-.card.owned{border-color:var(--coin-gold); box-shadow:0 0 16px rgba(167,139,250,0.15);}
+.card.owned{border-color:var(--coin-gold); box-shadow:0 0 16px rgba(220,38,38,0.15);}
 .cimg{aspect-ratio:63/88;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative;background:var(--panel2);cursor:default;}
 .cimg.zoomable{cursor:zoom-in;}
 .cimg img{width:100%;height:100%;object-fit:cover;display:block;}
@@ -175,7 +175,7 @@ main{max-width:1200px;margin:0 auto;padding:0.5rem 1.5rem 3rem;}
 .cname{font-family:"Cinzel",serif;font-size:0.95rem;letter-spacing:0.01em;color:var(--parchment);margin-bottom:0.4rem;}
 .ctags{display:flex;flex-wrap:wrap;gap:0.3rem;}
 .etag{font-size:0.62rem;font-weight:600;letter-spacing:0.02em;padding:0.18rem 0.5rem;border-radius:4px;white-space:nowrap;
-  border:1px solid var(--border2);color:var(--coin-gold);background:rgba(167,139,250,0.06);}
+  border:1px solid var(--border2);color:var(--coin-gold);background:rgba(220,38,38,0.06);}
 
 .grid.lv .card{display:flex;flex-direction:row;align-items:center;min-height:76px;}
 .grid.lv .cimg{width:60px;height:82px;flex-shrink:0;aspect-ratio:unset;}
@@ -212,7 +212,7 @@ footer .legal{margin-top:0.6rem;color:#5a4d33;}
 
 <header class="hero">
   <div class="eyebrow">Pokémon Trading Card Game · Edição Inglesa</div>
-  <h1 class="display">Giratina</h1>
+  <h1 class="display">Cinderace</h1>
   <div class="stats">
     <div class="stat"><div class="stat-val" id="statOwned">0</div><div class="stat-lbl">Tenho</div></div>
     <div class="stat"><div class="stat-val" id="statTotal">0</div><div class="stat-lbl">Total</div></div>
@@ -251,47 +251,37 @@ footer .legal{margin-top:0.6rem;color:#5a4d33;}
 
 <script>
 const cards=[
-  {id:"gir-la-004",   grupo:"Giratina", name:"Giratina", set:"Legends Awakened",   num:"004/146", rarity:"Rare Holo", col:"#14b8a6", img:"https://images.pokemontcg.io/dp6/4_hires.png",       localImg:"imgs/4_hires.png"},
-  {id:"gir-pt-009",   grupo:"Giratina", name:"Giratina", set:"Platinum",           num:"009/127", rarity:"Rare Holo", col:"#14b8a6", img:"https://images.pokemontcg.io/pl1/9_hires.png",       localImg:"imgs/9_hires.png"},
-  {id:"gir-pt-010",   grupo:"Giratina", name:"Giratina", set:"Platinum",           num:"010/127", rarity:"Rare Holo", col:"#14b8a6", img:"https://images.pokemontcg.io/pl1/10_hires.png",      localImg:"imgs/10_hires.png"},
-  {id:"gir-pt-027",   grupo:"Giratina", name:"Giratina", set:"Platinum",           num:"027/127", rarity:"Rare",      col:"#14b8a6", img:"https://images.pokemontcg.io/pl1/27_hires.png",      localImg:"imgs/27_hires.png"},
-  {id:"gir-pt-028",   grupo:"Giratina", name:"Giratina", set:"Platinum",           num:"028/127", rarity:"Rare",      col:"#14b8a6", img:"https://images.pokemontcg.io/pl1/28_hires.png",      localImg:"imgs/28_hires.png"},
-  {id:"gir-pls-062",  grupo:"Giratina", name:"Giratina", set:"Plasma Storm",       num:"062/135", rarity:"Rare",      col:"#14b8a6", img:"https://images.pokemontcg.io/bw8/62_hires.png",      localImg:"imgs/62_hires.png"},
-  {id:"gir-xyp-184",  grupo:"Giratina", name:"Giratina", set:"XY Black Star Promos", num:"XY184", rarity:"Promo",     col:"#14b8a6", img:"https://images.pokemontcg.io/xyp/XY184_hires.png",   localImg:"imgs/XY184_hires.png"},
-  {id:"gir-lot-097",  grupo:"Giratina", name:"Giratina", set:"Lost Thunder",       num:"097/214", rarity:"Rare Holo", col:"#14b8a6", img:"https://images.pokemontcg.io/sm8/97_hires.png",      localImg:"imgs/sm8-97_hires.png"},
-  {id:"gir-unm-086",  grupo:"Giratina", name:"Giratina", set:"Unified Minds",      num:"086/236", rarity:"Rare Holo", col:"#14b8a6", img:"https://images.pokemontcg.io/sm11/86_hires.png",     localImg:"imgs/86_hires.png"},
+  {id:"cin-ssh-034",  grupo:"Cinderace", name:"Cinderace", set:"Sword & Shield",   num:"034/202", rarity:"Holo Rare", col:"#dc2626", img:"https://images.pokemontcg.io/swsh1/34_hires.png", localImg:"imgs/34_hires.png"},
+  {id:"cin-ssh-035",  grupo:"Cinderace", name:"Cinderace", set:"Sword & Shield",   num:"035/202", rarity:"Holo Rare", col:"#dc2626", img:"https://images.pokemontcg.io/swsh1/35_hires.png", localImg:"imgs/35_hires.png"},
+  {id:"cin-ssh-036",  grupo:"Cinderace", name:"Cinderace", set:"Sword & Shield",   num:"036/202", rarity:"Rare",      col:"#dc2626", img:"https://images.pokemontcg.io/swsh1/36_hires.png", localImg:"imgs/36_hires.png"},
+  {id:"cin-cre-028",  grupo:"Cinderace", name:"Cinderace", set:"Chilling Reign",   num:"028/198", rarity:"Holo Rare", col:"#dc2626", img:"https://images.pokemontcg.io/swsh6/28_hires.png", localImg:"imgs/swsh6-28_hires.png"},
+  {id:"cin-sp-112",   grupo:"Cinderace", name:"Cinderace", set:"SWSH Black Star Promos (Prerelease)", num:"SWSH112", rarity:"Promo", col:"#ea580c", img:"https://images.pokemontcg.io/swshp/SWSH112_hires.png", localImg:"imgs/SWSH112_hires.png"},
+  {id:"cin-sp-278",   grupo:"Cinderace", name:"Cinderace", set:"SWSH Black Star Promos", num:"SWSH278", rarity:"Promo", col:"#ea580c", img:"https://images.pokemontcg.io/swshp/SWSH278_hires.png", localImg:"imgs/SWSH278_hires.png"},
+  {id:"cin-shf-sv17", grupo:"Cinderace", name:"Cinderace", set:"Shining Fates (Shiny Vault)", num:"SV017/122", rarity:"Double Rare", col:"#ea580c", img:"https://images.pokemontcg.io/swsh45sv/SV17_hires.png", localImg:"imgs/SV17_hires.png"},
 
-  {id:"girlvx-pt-124", grupo:"Giratina LV.X", name:"Giratina LV.X", set:"Platinum", num:"124/127", rarity:"Rare Holo LV.X", col:"#a78bfa", img:"https://images.pokemontcg.io/pl1/124_hires.png", localImg:"imgs/pl1-124_hires.png"},
+  {id:"cin-v-fst-043", grupo:"Cinderace V", name:"Cinderace V", set:"Fusion Strike", num:"043/264", rarity:"Double Rare", col:"#f87171", img:"https://images.pokemontcg.io/swsh8/43_hires.png", localImg:"imgs/swsh8-43_hires.png"},
+  {id:"cin-v-fst-044", grupo:"Cinderace V", name:"Cinderace V", set:"Fusion Strike", num:"044/264", rarity:"Double Rare", col:"#f87171", img:"https://images.pokemontcg.io/swsh8/44_hires.png", localImg:"imgs/swsh8-44_hires.png"},
+  {id:"cin-v-rcl-035", grupo:"Cinderace V", name:"Cinderace V", set:"Rebel Clash",   num:"035/209", rarity:"Double Rare", col:"#f87171", img:"https://images.pokemontcg.io/swsh2/35_hires.png", localImg:"imgs/swsh2-35_hires.png"},
+  {id:"cin-v-rcl-178", grupo:"Cinderace V", name:"Cinderace V", set:"Rebel Clash (full art)", num:"178/209", rarity:"Ultra Rare", col:"#fca5a5", img:"https://images.pokemontcg.io/swsh2/178_hires.png", localImg:"imgs/swsh2-178_hires.png"},
+  {id:"cin-v-sp-015",  grupo:"Cinderace V", name:"Cinderace V", set:"SWSH Black Star Promos", num:"SWSH015", rarity:"Promo", col:"#f87171", img:"https://images.pokemontcg.io/swshp/SWSH015_hires.png", localImg:"imgs/SWSH015_hires.png"},
+  {id:"cin-v-shf-018", grupo:"Cinderace V", name:"Cinderace V", set:"Shining Fates", num:"018/073", rarity:"Double Rare", col:"#f87171", img:"https://images.pokemontcg.io/swsh45/18_hires.png", localImg:"imgs/swsh45-18_hires.png"},
 
-  {id:"girex-dex-092", grupo:"Giratina-EX", name:"Giratina-EX", set:"Dragons Exalted",  num:"092/124", rarity:"Rare Holo EX", col:"#ec4899", img:"https://images.pokemontcg.io/bw6/92_hires.png",  localImg:"imgs/92_hires.png"},
-  {id:"girex-dex-124", grupo:"Giratina-EX", name:"Giratina-EX", set:"Dragons Exalted",  num:"124/124", rarity:"Rare Ultra (secreta)", col:"#ec4899", img:"https://images.pokemontcg.io/bw6/124_hires.png", localImg:"imgs/dex-124_hires.png"},
-  {id:"girex-aor-057", grupo:"Giratina-EX", name:"Giratina-EX", set:"Ancient Origins",  num:"057/098", rarity:"Rare Holo EX", col:"#ec4899", img:"https://images.pokemontcg.io/xy7/57_hires.png",  localImg:"imgs/57_hires.png"},
-  {id:"girex-aor-093", grupo:"Giratina-EX", name:"Giratina-EX", set:"Ancient Origins",  num:"093/098", rarity:"Rare Ultra",   col:"#ec4899", img:"https://images.pokemontcg.io/xy7/93_hires.png",  localImg:"imgs/93_hires.png"},
+  {id:"cin-vmax-rcl-036", grupo:"Cinderace VMAX", name:"Cinderace VMAX", set:"Rebel Clash", num:"036/209", rarity:"Double Rare", col:"#b91c1c", img:"https://images.pokemontcg.io/swsh2/36_hires.png", localImg:"imgs/swsh2-36_hires.png"},
+  {id:"cin-vmax-rcl-194", grupo:"Cinderace VMAX", name:"Cinderace VMAX", set:"Rebel Clash (secreta)", num:"194/209", rarity:"Rainbow Rare", col:"#fecaca", img:"https://images.pokemontcg.io/swsh2/194_hires.png", localImg:"imgs/swsh2-194_hires.png"},
+  {id:"cin-vmax-shf-019", grupo:"Cinderace VMAX", name:"Cinderace VMAX", set:"Shining Fates", num:"019/073", rarity:"Triple Rare", col:"#b91c1c", img:"https://images.pokemontcg.io/swsh45/19_hires.png", localImg:"imgs/swsh45-19_hires.png"},
 
-  {id:"girprism-sm5-058", grupo:"Giratina ♢", name:"Giratina ♢", set:"Ultra Prism", num:"058/156", rarity:"Rare Prime (Prism Star)", col:"#fbbf24", img:"https://images.pokemontcg.io/sm5/58_hires.png", localImg:"imgs/58_hires.png"},
+  {id:"cin-ex-asc-038", grupo:"Cinderace ex", name:"Cinderace ex", set:"Ascended Heroes", num:"038/217", rarity:"Double Rare", col:"#facc15", localImg:"imgs/cin-ex-asc-038.jpg"},
+  {id:"cin-ex-scr-028", grupo:"Cinderace ex", name:"Cinderace ex", set:"Stellar Crown",   num:"028/142", rarity:"Double Rare", col:"#facc15", img:"https://images.pokemontcg.io/sv7/28_hires.png", localImg:"imgs/sv7-28_hires.png"},
+  {id:"cin-ex-scr-157", grupo:"Cinderace ex", name:"Cinderace ex", set:"Stellar Crown (secreta)", num:"157/142", rarity:"Ultra Rare", col:"#fef08a", localImg:"imgs/cin-ex-scr-157.jpg"},
+  {id:"cin-ex-svp-163", grupo:"Cinderace ex", name:"Cinderace ex", set:"Scarlet & Violet Promos", num:"SVP163", rarity:"Promo", col:"#facc15", localImg:"imgs/cin-ex-svp-163.jpg"},
 
-  {id:"garchompgir-unm-146", grupo:"Garchomp & Giratina-GX", name:"Garchomp & Giratina-GX", set:"Unified Minds", num:"146/236", rarity:"Ultra Rare",              col:"#fb923c", img:"https://images.pokemontcg.io/sm11/146_hires.png", localImg:"imgs/146_hires.png"},
-  {id:"garchompgir-unm-228", grupo:"Garchomp & Giratina-GX", name:"Garchomp & Giratina-GX", set:"Unified Minds", num:"228/236", rarity:"Rare Ultra (full art)",   col:"#fb923c", img:"https://images.pokemontcg.io/sm11/228_hires.png", localImg:"imgs/228_hires.png"},
-  {id:"garchompgir-unm-247", grupo:"Garchomp & Giratina-GX", name:"Garchomp & Giratina-GX", set:"Unified Minds", num:"247/236", rarity:"Rare Rainbow (hyper)",    col:"#fb923c", img:"https://images.pokemontcg.io/sm11/247_hires.png", localImg:"imgs/247_hires.png"},
-  {id:"garchompgir-smp-193", grupo:"Garchomp & Giratina-GX", name:"Garchomp & Giratina-GX", set:"SM Black Star Promos", num:"SM193", rarity:"Promo",             col:"#fb923c", img:"https://images.pokemontcg.io/smp/SM193_hires.png", localImg:"imgs/SM193_hires.png"},
-
-  {id:"girv-swsh11-130", grupo:"Giratina V", name:"Giratina V", set:"Lost Origin", num:"130/196", rarity:"Ultra Rare",                     col:"#38bdf8", img:"https://images.pokemontcg.io/swsh11/130_hires.png", localImg:"imgs/130_hires.png"},
-  {id:"girv-swsh11-185", grupo:"Giratina V", name:"Giratina V", set:"Lost Origin", num:"185/196", rarity:"Rare Ultra (alt art)",           col:"#38bdf8", img:"https://images.pokemontcg.io/swsh11/185_hires.png", localImg:"imgs/185_hires.png"},
-  {id:"girv-swsh11-186", grupo:"Giratina V", name:"Giratina V", set:"Lost Origin", num:"186/196", rarity:"Rare Ultra (special full art)",  col:"#38bdf8", img:"https://images.pokemontcg.io/swsh11/186_hires.png", localImg:"imgs/186_hires.png"},
-  {id:"girv-swshp-259",  grupo:"Giratina V", name:"Giratina V", set:"SWSH Black Star Promos", num:"SWSH259", rarity:"Promo",             col:"#38bdf8", img:"https://images.pokemontcg.io/swshp/SWSH259_hires.png", localImg:"imgs/SWSH259_hires.png"},
-
-  {id:"girvstar-swsh11-131", grupo:"Giratina VSTAR", name:"Giratina VSTAR", set:"Lost Origin", num:"131/196", rarity:"Rare Holo VSTAR",     col:"#f43f5e", img:"https://images.pokemontcg.io/swsh11/131_hires.png", localImg:"imgs/swsh11-131_hires.png"},
-  {id:"girvstar-swsh11-201", grupo:"Giratina VSTAR", name:"Giratina VSTAR", set:"Lost Origin", num:"201/196", rarity:"Rare Rainbow",        col:"#f43f5e", img:"https://images.pokemontcg.io/swsh11/201_hires.png", localImg:"imgs/201_hires.png"},
-  {id:"girvstar-swsh11-212", grupo:"Giratina VSTAR", name:"Giratina VSTAR", set:"Lost Origin", num:"212/196", rarity:"Rare Secret",         col:"#f43f5e", img:"https://images.pokemontcg.io/swsh11/212_hires.png", localImg:"imgs/212_hires.png"},
-  {id:"girvstar-crz-gg69",   grupo:"Giratina VSTAR", name:"Giratina VSTAR", set:"Crown Zenith (Galarian Gallery)", num:"GG69/GG70", rarity:"Galarian Gallery Secret Rare", col:"#f43f5e", img:"https://images.pokemontcg.io/swsh12pt5gg/GG69_hires.png", localImg:"imgs/GG69_hires.png"},
-
-  {id:"gir-jp-realworld", grupo:"Giratina", name:"Giratina (Mundo Real / 現実世界のギラティナ)", set:"DP-P Movie Promo (Japão, exclusivo)", num:"—", rarity:"Promo (só Japão)", col:"#14b8a6", localImg:"imgs/gir-jp-realworld.jpg"},
+  {id:"cin-meg-028", grupo:"Cinderace", name:"Cinderace", set:"Mega Evolution", num:"028/132", rarity:"Rare", col:"#dc2626", localImg:"imgs/cin-meg-028.jpg"},
 ];
 
-const grupoColors={"Giratina":"#14b8a6","Giratina LV.X":"#a78bfa","Giratina-EX":"#ec4899","Giratina ♢":"#fbbf24","Garchomp & Giratina-GX":"#fb923c","Giratina V":"#38bdf8","Giratina VSTAR":"#f43f5e"};
-const grupoFilters=["Todas","Giratina","Giratina LV.X","Giratina-EX","Giratina ♢","Garchomp & Giratina-GX","Giratina V","Giratina VSTAR"];
+const grupoColors={"Cinderace":"#dc2626","Cinderace V":"#f87171","Cinderace VMAX":"#b91c1c","Cinderace ex":"#facc15"};
+const grupoFilters=["Todas","Cinderace","Cinderace V","Cinderace VMAX","Cinderace ex"];
 let activeGrupo="Todas", viewMode="grid";
-const STORAGE_KEY="pkmn_giratina_owned";
+const STORAGE_KEY="pkmn_cinderace_owned";
 const owned=new Set(JSON.parse(localStorage.getItem(STORAGE_KEY)||"[]"));
 
 const zoomOverlay=document.createElement("div");zoomOverlay.className="zoom-overlay";
@@ -311,7 +301,7 @@ zoomOverlay.addEventListener("click", e=>{ if(e.target===zoomOverlay) closeZoom(
 zoomOverlay.querySelector(".zoom-close").addEventListener("click", closeZoom);
 document.addEventListener("keydown", e=>{ if(e.key==="Escape") closeZoom(); });
 
-function cardIcon(){return "&#128009;";}
+function cardIcon(){return "&#9917;";}
 
 function makeCard(data,delay){
   const gc=grupoColors[data.grupo]||"#d4a527", isOwned=owned.has(data.id);
@@ -323,7 +313,7 @@ function makeCard(data,delay){
   const img=document.createElement("img");img.alt=data.name+" — "+data.set+" "+data.num;img.loading="lazy";
   img.src = data.localImg;
   const ph=document.createElement("div");ph.className="phdr";ph.style.background=gc+"12";
-  ph.innerHTML=`<div class="phico" style="color:${gc}">&#128009;</div><div class="phnm" style="color:${gc}">${data.name}<br>${data.set} ${data.num}</div>`;
+  ph.innerHTML=`<div class="phico" style="color:${gc}">&#9917;</div><div class="phnm" style="color:${gc}">${data.name}<br>${data.set} ${data.num}</div>`;
   ph.style.display="none";
   img.onload=()=>{ imgArea.classList.add("zoomable"); };
   img.onerror=()=>{
@@ -365,7 +355,7 @@ function makeCard(data,delay){
 function render(){
   const q=document.getElementById("search").value.toLowerCase().trim();
   const out=document.getElementById("output");out.innerHTML="";
-  const grupos = activeGrupo==="Todas" ? ["Giratina","Giratina LV.X","Giratina-EX","Giratina ♢","Garchomp & Giratina-GX","Giratina V","Giratina VSTAR"] : [activeGrupo];
+  const grupos = activeGrupo==="Todas" ? ["Cinderace","Cinderace V","Cinderace VMAX","Cinderace ex"] : [activeGrupo];
   let total=0;
 
   grupos.forEach(g=>{
@@ -383,7 +373,7 @@ function render(){
 
   if(!total){
     const g=document.createElement("div");g.className="grid";
-    g.innerHTML=`<div class="empty"><div class="empty-ico">&#128009;</div><p>Nenhuma carta corresponde a "${q}"</p></div>`;
+    g.innerHTML=`<div class="empty"><div class="empty-ico">&#9917;</div><p>Nenhuma carta corresponde a "${q}"</p></div>`;
     out.appendChild(g);
   }
   document.getElementById("countPill").textContent=`A mostrar ${total} carta${total!==1?"s":""}`;

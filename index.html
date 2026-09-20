@@ -137,6 +137,9 @@ main{max-width:1100px;margin:0 auto;padding:3rem 1.5rem 3rem;}
 .card.coins   { --accent:#d4a527; --accent-bright:#f4cf5e; --accent-dim:rgba(212,165,39,0.12);  --accent-shadow:rgba(212,165,39,0.25); }
 .card.giratina{ --accent:#a78bfa; --accent-bright:#c4b5fd; --accent-dim:rgba(167,139,250,0.12); --accent-shadow:rgba(167,139,250,0.25); }
 .card.scorbunny{--accent:#fb923c; --accent-bright:#fdba74; --accent-dim:rgba(251,146,60,0.12);  --accent-shadow:rgba(251,146,60,0.25); }
+.card.raboot{   --accent:#d97706; --accent-bright:#f59e0b; --accent-dim:rgba(217,119,6,0.12);   --accent-shadow:rgba(217,119,6,0.25); }
+.card.cinderace{--accent:#dc2626; --accent-bright:#f87171; --accent-dim:rgba(220,38,38,0.12);   --accent-shadow:rgba(220,38,38,0.25); }
+.card.pikachu{  --accent:#eab308; --accent-bright:#fde047; --accent-dim:rgba(234,179,8,0.12);   --accent-shadow:rgba(234,179,8,0.25); }
 
 footer{
   text-align:center;padding:2.5rem 1.5rem 3.5rem;color:var(--muted);font-size:0.78rem;
@@ -205,6 +208,51 @@ footer .legal{margin-top:0.6rem;color:#5f5a6b;}
       <div class="card-cta">Abrir coleção <span class="arrow">→</span></div>
     </a>
 
+    <a class="card raboot" href="raboot.html">
+      <div class="card-top">
+        <div class="card-icon">🥾</div>
+        <div class="card-names">
+          <span class="card-person">LM Ultimate</span>
+          <span class="card-pokemon">Raboot</span>
+        </div>
+      </div>
+      <div class="progress-row">
+        <div class="progress-track"><div class="progress-fill" id="fill-raboot"></div></div>
+        <div class="progress-label"><span id="label-raboot">a carregar…</span><span id="pct-raboot">0%</span></div>
+      </div>
+      <div class="card-cta">Abrir coleção <span class="arrow">→</span></div>
+    </a>
+
+    <a class="card cinderace" href="cinderace.html">
+      <div class="card-top">
+        <div class="card-icon">⚽</div>
+        <div class="card-names">
+          <span class="card-person">LM Ultimate</span>
+          <span class="card-pokemon">Cinderace</span>
+        </div>
+      </div>
+      <div class="progress-row">
+        <div class="progress-track"><div class="progress-fill" id="fill-cinderace"></div></div>
+        <div class="progress-label"><span id="label-cinderace">a carregar…</span><span id="pct-cinderace">0%</span></div>
+      </div>
+      <div class="card-cta">Abrir coleção <span class="arrow">→</span></div>
+    </a>
+
+    <a class="card pikachu" href="pikachu.html">
+      <div class="card-top">
+        <div class="card-icon">⚡</div>
+        <div class="card-names">
+          <span class="card-person">LM Ultimate</span>
+          <span class="card-pokemon">Pikachu <small style="opacity:0.6;">(Parte 1/N)</small></span>
+        </div>
+      </div>
+      <div class="progress-row">
+        <div class="progress-track"><div class="progress-fill" id="fill-pikachu"></div></div>
+        <div class="progress-label"><span id="label-pikachu">a carregar…</span><span id="pct-pikachu">0%</span></div>
+      </div>
+      <div class="card-cta">Abrir coleção <span class="arrow">→</span></div>
+    </a>
+
   </div>
 </main>
 
@@ -219,8 +267,8 @@ footer .legal{margin-top:0.6rem;color:#5f5a6b;}
 
 <script>
 // Totais fixos (têm de acompanhar o número de cartas de cada ficheiro)
-const totals = { coins: 16, giratina: 27, scorbunny: 14 };
-const storageKeys = { coins: "pkmn_gh_owned", giratina: "pkmn_giratina_owned", scorbunny: "pkmn_scorbunny_owned" };
+const totals = { coins: 16, giratina: 28, scorbunny: 14, raboot: 8, cinderace: 21, pikachu: 27 };
+const storageKeys = { coins: "pkmn_gh_owned", giratina: "pkmn_giratina_owned", scorbunny: "pkmn_scorbunny_owned", raboot: "pkmn_raboot_owned", cinderace: "pkmn_cinderace_owned", pikachu: "pkmn_pikachu_owned" };
 
 function refreshProgress(){
   Object.keys(totals).forEach(key=>{

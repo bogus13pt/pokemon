@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Gimmighoul &amp; Gholdengo — Coleção TCG</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;900&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --coin-gold:#d4a527;
+  --coin-gold-bright:#f4cf5e;
+  --ink-black:#0e0b08;
+  --panel:#171310;
+  --panel2:#1f1a14;
+  --panel3:#241e16;
+  --parchment:#e9dcc0;
+  --ghost-teal:#3a7a6f;
+  --ghost-teal-bright:#5aa89b;
+  --border:rgba(212,165,39,0.16);
+  --border2:rgba(212,165,39,0.32);
+  --muted:#8f7f56;
+  --muted2:#b7a878;
+  --warn-red:#c96a4d;
+  --radius:8px;
+  --card-w:190px;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px);}
+body{
+  background:var(--ink-black);
+  background-image:
+    radial-gradient(ellipse 90% 45% at 50% -5%, rgba(212,165,39,0.10) 0%, transparent 60%),
+    radial-gradient(circle at 88% 20%, rgba(58,122,111,0.08), transparent 45%);
+  color:var(--parchment);
+  font-family:"EB Garamond","Iowan Old Style","Palatino Linotype",Georgia,serif;
+  line-height:1.5;
+  min-height:100vh;
+  padding-bottom:80px;
+  -webkit-font-smoothing:antialiased;
+}
+.display{font-family:"Cinzel","Copperplate","Trajan Pro",Georgia,serif;letter-spacing:0.03em;}
+
+/* ── HEADER ── */
+header.hero{
+  position:relative;
+  padding:3.5rem 1.5rem 2.5rem;
+  text-align:center;
+  border-bottom:2px solid var(--coin-gold);
+  box-shadow:0 4px 40px rgba(212,165,39,0.12);
+}
+.eyebrow{
+  font-family:"Cinzel",serif;
+  font-size:0.68rem;
+  font-weight:700;
+  letter-spacing:0.5em;
+  text-transform:uppercase;
+  color:var(--ghost-teal-bright);
+  margin-bottom:0.8rem;
+  text-shadow:0 0 18px rgba(90,168,155,0.4);
+}
+h1.display{
+  font-size:clamp(2.1rem, 6vw, 3.4rem);
+  margin:0 0 0.5rem;
+  color:var(--coin-gold-bright);
+  text-shadow:0 0 30px rgba(244,207,94,0.25);
+}
+.subtitle{
+  max-width:620px;
+  margin:0 auto;
+  color:var(--muted2);
+  font-size:0.98rem;
+}
+.subtitle code{background:var(--panel2);padding:0.1rem 0.4rem;border-radius:4px;color:var(--coin-gold-bright);}
+
+.stats{
+  display:flex;
+  justify-content:center;
+  gap:0;
+  margin:1.6rem auto 0;
+  max-width:480px;
+  border:1px solid var(--border2);
+  border-radius:10px;
+  overflow:hidden;
+  background:linear-gradient(135deg, rgba(23,19,16,0.92), rgba(31,26,20,0.92));
+  backdrop-filter:blur(10px);
+}
+.stat{flex:1;padding:0.7rem 0.5rem;text-align:center;border-right:1px solid var(--border);}
+.stat:last-child{border-right:none;}
+.stat-val{font-family:"Cinzel",serif;font-size:1.5rem;font-weight:700;line-height:1;color:var(--coin-gold-bright);text-shadow:0 0 14px rgba(244,207,94,0.35);}
+.stat-val.teal{color:var(--ghost-teal-bright);text-shadow:0 0 14px rgba(90,168,155,0.35);}
+.stat-lbl{font-size:0.62rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);margin-top:0.25rem;}
+
+/* ── CONTROLS ── */
+.controls{max-width:1200px;margin:1.8rem auto 0;padding:0 1.5rem;}
+.search-wrap{position:relative;margin-bottom:0.9rem;}
+.sicon{position:absolute;left:1rem;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none;font-size:0.9rem;}
+input[type="text"]{
+  width:100%;background:var(--panel);border:1px solid var(--border2);border-radius:8px;
+  color:var(--parchment);font-family:"EB Garamond",serif;font-size:0.95rem;
+  padding:0.7rem 1rem 0.7rem 2.6rem;outline:none;transition:border-color .2s;
+}
+input[type="text"]:focus{border-color:var(--coin-gold);}
+input[type="text"]::placeholder{color:var(--muted);}
+
+.toolbar-row{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0.7rem;margin-bottom:0.9rem;}
+.frow{display:flex;flex-wrap:wrap;gap:0.5rem;}
+.fbtn{
+  background:var(--panel);border:1px solid var(--border2);border-radius:999px;color:var(--muted2);
+  cursor:pointer;font-family:"EB Garamond",serif;font-size:0.82rem;font-weight:600;
+  padding:0.35rem 0.9rem;transition:all .15s;
+}
+.fbtn:hover{border-color:var(--coin-gold);color:var(--parchment);}
+.fbtn.active{background:var(--coin-gold);border-color:var(--coin-gold);color:var(--ink-black);}
+.right-controls{display:flex;align-items:center;gap:0.6rem;}
+.cpill{font-size:0.78rem;color:var(--muted);}
+.vtog{display:flex;gap:0.3rem;}
+.vbtn{background:var(--panel);border:1px solid var(--border2);border-radius:6px;color:var(--muted);cursor:pointer;
+  width:30px;height:30px;display:flex;align-items:center;justify-content:center;font-size:0.85rem;transition:all .15s;}
+.vbtn.active{background:var(--coin-gold);border-color:var(--coin-gold);color:var(--ink-black);}
+
+/* ── SECTION LABEL ── */
+.slabel{max-width:1200px;margin:2rem auto 1rem;padding:0 1.5rem;display:flex;align-items:center;gap:0.9rem;}
+.slabel-inner{display:flex;align-items:center;gap:0.6rem;background:var(--panel2);border:1px solid var(--border2);
+  border-radius:8px;padding:0.4rem 1rem;white-space:nowrap;}
+.sdot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+.stxt{font-family:"Cinzel",serif;font-size:0.95rem;letter-spacing:0.05em;color:var(--coin-gold-bright);}
+.scnt{font-size:0.7rem;font-weight:600;color:var(--muted);letter-spacing:0.05em;}
+.slabel::before,.slabel::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--border));}
+.slabel::after{background:linear-gradient(90deg,var(--border),transparent);}
+
+/* ── GRID / CARDS ── */
+main{max-width:1200px;margin:0 auto;padding:0.5rem 1.5rem 3rem;}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(var(--card-w),1fr));gap:1rem;}
+.grid.lv{grid-template-columns:1fr;}
+.card{
+  background:linear-gradient(160deg,var(--panel) 0%, var(--panel2) 100%);
+  border:1px solid var(--border2);border-radius:var(--radius);overflow:hidden;position:relative;
+  transition:transform .2s, box-shadow .2s, border-color .2s;
+  animation:rise .3s ease both;
+}
+@keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.card:hover{transform:translateY(-4px);}
+.card.owned{border-color:var(--coin-gold); box-shadow:0 0 16px rgba(212,165,39,0.15);}
+.cimg{aspect-ratio:63/88;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative;background:var(--panel2);cursor:default;}
+.cimg.zoomable{cursor:zoom-in;}
+.cimg img{width:100%;height:100%;object-fit:cover;display:block;}
+.zoom-hint{position:absolute;bottom:6px;right:6px;width:24px;height:24px;border-radius:50%;
+  background:rgba(14,11,8,0.7);border:1px solid rgba(233,220,192,0.28);color:rgba(233,220,192,0.65);
+  display:flex;align-items:center;justify-content:center;font-size:0.7rem;opacity:0;transition:opacity .15s;z-index:3;pointer-events:none;}
+.cimg.zoomable:hover .zoom-hint{opacity:1;}
+
+.zoom-overlay{position:fixed;inset:0;background:rgba(14,11,8,0.92);display:none;align-items:center;justify-content:center;
+  z-index:100;padding:2rem;backdrop-filter:blur(5px);}
+.zoom-overlay.open{display:flex;}
+.zoom-box{position:relative;max-width:min(90vw,440px);text-align:center;}
+.zoom-box img{width:100%;border-radius:12px;border:2px solid var(--coin-gold);box-shadow:0 20px 60px rgba(0,0,0,0.6);display:block;}
+.zoom-caption{margin-top:0.9rem;color:var(--coin-gold-bright);font-family:"Cinzel",serif;font-size:1.05rem;letter-spacing:0.02em;}
+.zoom-caption .sub{display:block;font-family:"EB Garamond",serif;color:var(--muted2);font-size:0.85rem;margin-top:0.25rem;letter-spacing:0;}
+.zoom-close{position:absolute;top:-16px;right:-16px;width:36px;height:36px;border-radius:50%;background:var(--coin-gold);
+  color:var(--ink-black);border:none;font-size:1.2rem;font-weight:700;cursor:pointer;display:flex;align-items:center;
+  justify-content:center;box-shadow:0 4px 14px rgba(0,0,0,0.4);}
+.phdr{width:100%;height:100%;flex-direction:column;align-items:center;justify-content:center;gap:0.4rem;padding:1rem;display:flex;}
+.phico{font-size:1.8rem;opacity:.22;}
+.phnm{font-size:0.72rem;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;text-align:center;opacity:.42;line-height:1.35;font-family:"Cinzel",serif;}
+.obtn{position:absolute;top:8px;right:8px;width:26px;height:26px;border-radius:50%;border:1px solid rgba(233,220,192,0.25);
+  background:rgba(14,11,8,0.75);cursor:pointer;display:flex;align-items:center;justify-content:center;
+  font-size:0.72rem;font-weight:700;color:rgba(233,220,192,0.35);transition:all .15s;z-index:3;}
+.obtn:hover{border-color:var(--coin-gold);color:var(--coin-gold-bright);}
+.obtn.owned{background:var(--coin-gold);border-color:var(--coin-gold);color:var(--ink-black);}
+.cbody{padding:0.7rem 0.8rem 0.85rem;}
+.cnum{font-size:0.68rem;font-weight:600;letter-spacing:0.06em;color:var(--muted);margin-bottom:0.15rem;}
+.cname{font-family:"Cinzel",serif;font-size:0.95rem;letter-spacing:0.01em;color:var(--parchment);margin-bottom:0.4rem;}
+.ctags{display:flex;flex-wrap:wrap;gap:0.3rem;}
+.etag{font-size:0.62rem;font-weight:600;letter-spacing:0.02em;padding:0.18rem 0.5rem;border-radius:4px;white-space:nowrap;
+  border:1px solid var(--border2);color:var(--coin-gold);background:rgba(212,165,39,0.06);}
+
+.grid.lv .card{display:flex;flex-direction:row;align-items:center;min-height:76px;}
+.grid.lv .cimg{width:60px;height:82px;flex-shrink:0;aspect-ratio:unset;}
+.grid.lv .cbody{flex:1;padding:0.5rem 0.9rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap;}
+.grid.lv .cname{margin-bottom:0;font-size:0.9rem;}
+.grid.lv .obtn{top:4px;right:4px;}
+
+.empty{grid-column:1/-1;text-align:center;padding:4.5rem 1.5rem;color:var(--muted);}
+.empty-ico{font-size:2.2rem;margin-bottom:0.8rem;opacity:.2;}
+.empty p{font-family:"Cinzel",serif;font-size:1.1rem;letter-spacing:0.03em;}
+
+.jp-note{
+  max-width:1000px;margin:2.5rem auto 0;background:var(--panel2);border:1px solid var(--border2);
+  border-radius:var(--radius);padding:1.2rem 1.4rem;font-size:0.9rem;color:var(--muted2);
+}
+.jp-note strong{color:var(--coin-gold-bright);}
+.jp-note ul{margin:0.6rem 0 0;padding-left:1.2rem;}
+.jp-note a{color:var(--coin-gold-bright);text-decoration:none;border-bottom:1px solid var(--border2);}
+.jp-note a:hover{border-color:var(--coin-gold-bright);}
+
+footer{
+  text-align:center;padding:2.5rem 1.5rem 3.5rem;color:var(--muted);font-size:0.78rem;
+  border-top:1px solid var(--border);max-width:900px;margin:2rem auto 0;
+}
+footer .legal{margin-top:0.6rem;color:#5a4d33;}
+
+@media (max-width:480px){
+  :root{--card-w:150px;}
+  .stat-val{font-size:1.2rem;}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="eyebrow">Pokémon Trading Card Game · Edição Inglesa</div>
+  <h1 class="display">Gimmighoul &amp; Gholdengo</h1>
+  <div class="stats">
+    <div class="stat"><div class="stat-val" id="statOwned">0</div><div class="stat-lbl">Tenho</div></div>
+    <div class="stat"><div class="stat-val" id="statTotal">0</div><div class="stat-lbl">Total</div></div>
+    <div class="stat"><div class="stat-val teal" id="statPct">0%</div><div class="stat-lbl">Completo</div></div>
+    <div class="stat"><div class="stat-val teal" id="statSets">0</div><div class="stat-lbl">Sets</div></div>
+  </div>
+</header>
+
+<div class="controls">
+  <div class="search-wrap">
+    <span class="sicon">&#128269;</span>
+    <input type="text" id="search" placeholder="Pesquisar por nome, set ou número…" autocomplete="off" spellcheck="false">
+  </div>
+  <div class="toolbar-row">
+    <div class="frow" id="filters"></div>
+    <div class="right-controls">
+      <span class="cpill" id="countPill">A mostrar 0 cartas</span>
+      <div class="vtog">
+        <button class="vbtn active" id="gridViewBtn" title="Vista em grelha">&#9638;</button>
+        <button class="vbtn" id="listViewBtn" title="Vista em lista">&#9776;</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<main id="output"></main>
+
+<footer>
+  Página de referência pessoal para consulta offline, criada para organizar a coleção física de cartas.
+  <div class="legal">
+    Pokémon e todos os nomes, imagens e marcas relacionados são propriedade de Nintendo, Game Freak,
+    Creatures Inc. e The Pokémon Company. Esta página não é produzida, aprovada ou afiliada com nenhuma
+    destas entidades — é apenas uma ferramenta de organização pessoal, sem fins comerciais. As eventuais
+    imagens usadas localmente são fotografias/scans próprios do utilizador.
+  </div>
+</footer>
+
+<script>
+const cards=[
+  {id:"gimmi-pr-087", grupo:"Gimmighoul", name:"Gimmighoul", set:"Paradox Rift",         num:"087/182", rarity:"Comum",                        col:"#3a7a6f", img:"https://images.pokemontcg.io/sv4/87_hires.png",     localImg:"imgs/87_hires.png"},
+  {id:"gimmi-pr-088", grupo:"Gimmighoul", name:"Gimmighoul", set:"Paradox Rift",         num:"088/182", rarity:"Comum",                        col:"#3a7a6f", img:"https://images.pokemontcg.io/sv4/88_hires.png",     localImg:"imgs/88_hires.png"},
+  {id:"gimmi-pr-198", grupo:"Gimmighoul", name:"Gimmighoul", set:"Paradox Rift",         num:"198/182", rarity:"Illustration Rare",            col:"#5aa89b", img:"https://images.pokemontcg.io/sv4/198_hires.png",    localImg:"imgs/198_hires.png"},
+  {id:"gimmi-pf-044", grupo:"Gimmighoul", name:"Gimmighoul", set:"Paldean Fates",        num:"044/091", rarity:"Comum",                        col:"#3a7a6f", img:"https://images.pokemontcg.io/sv4pt5/44_hires.png",  localImg:"imgs/44_hires.png"},
+  {id:"gimmi-ss-097", grupo:"Gimmighoul", name:"Gimmighoul", set:"Surging Sparks",       num:"097/191", rarity:"Comum",                        col:"#3a7a6f", img:"https://images.pokemontcg.io/sv8/97_hires.png",      localImg:"imgs/97_hires.png"},
+  {id:"gimmi-me-067", grupo:"Gimmighoul", name:"Gimmighoul", set:"Mega Evolution",       num:"067/132", rarity:"Comum",                        col:"#3a7a6f", localImg:"imgs/MEG_067_R_EN.png"},
+  {id:"gimmi-30c-081", grupo:"Gimmighoul", name:"Gimmighoul", set:"30th Celebration",    num:"081/103", rarity:"A confirmar",                  col:"#3a7a6f", localImg:"imgs/Gimmighoul30thCelebration81.jpg"},
+
+  {id:"ghold-pf-067",  grupo:"Gholdengo", name:"Gholdengo",  set:"Paldean Fates",        num:"067/091", rarity:"Rare",                         col:"#d4a527", img:"https://images.pokemontcg.io/sv4pt5/67_hires.png",  localImg:"imgs/67_hires.png"},
+  {id:"ghold-ss-131",  grupo:"Gholdengo", name:"Gholdengo",  set:"Surging Sparks",       num:"131/191", rarity:"Uncommon",                     col:"#d4a527", img:"https://images.pokemontcg.io/sv8/131_hires.png",    localImg:"imgs/131_hires.png"},
+  {id:"ghold-me-099",  grupo:"Gholdengo", name:"Gholdengo",  set:"Mega Evolution",       num:"099/132", rarity:"Uncommon",                     col:"#d4a527", localImg:"imgs/MEG_099_R_EN.png"},
+  {id:"ghold-30c-108", grupo:"Gholdengo", name:"Gholdengo",  set:"30th Celebration",     num:"108/128", rarity:"Comum",                        col:"#d4a527", localImg:"imgs/Gholdengo30thCelebration108.jpg"},
+  {id:"ghold-30c-142", grupo:"Gholdengo", name:"Gholdengo",  set:"30th Celebration",     num:"142/128", rarity:"Illustration Rare",            col:"#f4cf5e", localImg:"imgs/Gholdengo30thCelebration142.jpg"},
+
+  {id:"gholdex-pr-139", grupo:"Gholdengo ex", name:"Gholdengo ex", set:"Paradox Rift",          num:"139/182", rarity:"Double Rare",                  col:"#f4cf5e", img:"https://images.pokemontcg.io/sv4/139_hires.png",   localImg:"imgs/139_hires.png"},
+  {id:"gholdex-pr-231", grupo:"Gholdengo ex", name:"Gholdengo ex", set:"Paradox Rift",          num:"231/182", rarity:"Ultra Rare",                   col:"#f4cf5e", img:"https://images.pokemontcg.io/sv4/231_hires.png",   localImg:"imgs/231_hires.png"},
+  {id:"gholdex-pr-252", grupo:"Gholdengo ex", name:"Gholdengo ex", set:"Paradox Rift",          num:"252/182", rarity:"Special Illustration Rare",    col:"#c96a4d", img:"https://images.pokemontcg.io/sv4/252_hires.png",   localImg:"imgs/252_hires.png"},
+  {id:"gholdex-pe-164", grupo:"Gholdengo ex", name:"Gholdengo ex", set:"Prismatic Evolutions",  num:"164/131", rarity:"Special Illustration Rare",    col:"#c96a4d", img:"https://images.pokemontcg.io/sv8pt5/164_hires.png", localImg:"imgs/164_hires.png"},
+];
+
+const grupoColors={"Gimmighoul":"#3a7a6f","Gholdengo":"#d4a527","Gholdengo ex":"#f4cf5e"};
+const grupoFilters=["Todas","Gimmighoul","Gholdengo","Gholdengo ex"];
+let activeGrupo="Todas", viewMode="grid";
+const STORAGE_KEY="pkmn_gh_owned";
+const owned=new Set(JSON.parse(localStorage.getItem(STORAGE_KEY)||"[]"));
+
+const zoomOverlay=document.createElement("div");zoomOverlay.className="zoom-overlay";
+zoomOverlay.innerHTML=`<div class="zoom-box"><button class="zoom-close" aria-label="Fechar">&times;</button><img alt=""><div class="zoom-caption"></div></div>`;
+document.body.appendChild(zoomOverlay);
+const zoomImg=zoomOverlay.querySelector("img");
+const zoomCaption=zoomOverlay.querySelector(".zoom-caption");
+
+function openZoom(data, src){
+  zoomImg.src=src;
+  zoomImg.alt=data.name+" — "+data.set+" "+data.num;
+  zoomCaption.innerHTML=`${data.name}<span class="sub">${data.set} · #${data.num} · ${data.rarity}</span>`;
+  zoomOverlay.classList.add("open");
+}
+function closeZoom(){ zoomOverlay.classList.remove("open"); }
+zoomOverlay.addEventListener("click", e=>{ if(e.target===zoomOverlay) closeZoom(); });
+zoomOverlay.querySelector(".zoom-close").addEventListener("click", closeZoom);
+document.addEventListener("keydown", e=>{ if(e.key==="Escape") closeZoom(); });
+
+function cardIcon(){return "&#127183;";}
+
+function makeCard(data,delay){
+  const gc=grupoColors[data.grupo]||"#d4a527", isOwned=owned.has(data.id);
+  const card=document.createElement("div");
+  card.className="card"+(isOwned?" owned":"");
+  card.style.animationDelay=delay+"s";
+
+  const imgArea=document.createElement("div");imgArea.className="cimg";
+  const img=document.createElement("img");img.alt=data.name+" — "+data.set+" "+data.num;img.loading="lazy";
+  img.src = data.img || data.localImg;
+  const ph=document.createElement("div");ph.className="phdr";ph.style.background=gc+"12";
+  ph.innerHTML=`<div class="phico" style="color:${gc}">&#127183;</div><div class="phnm" style="color:${gc}">${data.name}<br>${data.set} ${data.num}</div>`;
+  ph.style.display="none";
+  let triedLocal=false;
+  img.onload=()=>{ imgArea.classList.add("zoomable"); };
+  img.onerror=()=>{
+    if(!triedLocal && data.img && data.localImg){
+      triedLocal=true;
+      img.src=data.localImg;
+    } else {
+      img.style.display="none";ph.style.display="flex";imgArea.classList.remove("zoomable");
+    }
+  };
+  imgArea.appendChild(img);imgArea.appendChild(ph);
+
+  const zoomHint=document.createElement("div");zoomHint.className="zoom-hint";zoomHint.innerHTML="&#128269;";
+  imgArea.appendChild(zoomHint);
+  imgArea.addEventListener("click",()=>{
+    if(!imgArea.classList.contains("zoomable")) return;
+    openZoom(data, img.src);
+  });
+
+  const ownBtn=document.createElement("div");ownBtn.className="obtn"+(isOwned?" owned":"");ownBtn.textContent="✓";
+  ownBtn.title="Marcar como tenho";
+  ownBtn.addEventListener("click",e=>{
+    e.stopPropagation();
+    if(owned.has(data.id)){owned.delete(data.id);ownBtn.classList.remove("owned");card.classList.remove("owned");}
+    else{owned.add(data.id);ownBtn.classList.add("owned");card.classList.add("owned");}
+    localStorage.setItem(STORAGE_KEY,JSON.stringify([...owned]));
+    updateStats();
+  });
+  imgArea.appendChild(ownBtn);
+  card.appendChild(imgArea);
+
+  const body=document.createElement("div");body.className="cbody";
+  body.innerHTML=`
+    <div class="cnum">#${data.num}</div>
+    <div class="cname">${data.name}</div>
+    <div class="ctags">
+      <span class="etag">${data.set}</span>
+      <span class="etag" style="color:${gc};border-color:${gc}66">${data.rarity}</span>
+    </div>`;
+  card.appendChild(body);
+  return card;
+}
+
+function render(){
+  const q=document.getElementById("search").value.toLowerCase().trim();
+  const out=document.getElementById("output");out.innerHTML="";
+  const grupos = activeGrupo==="Todas" ? ["Gimmighoul","Gholdengo","Gholdengo ex"] : [activeGrupo];
+  let total=0;
+
+  grupos.forEach(g=>{
+    const f=cards.filter(c=>c.grupo===g && (!q || c.name.toLowerCase().includes(q) || c.set.toLowerCase().includes(q) || c.num.includes(q) || c.rarity.toLowerCase().includes(q)));
+    if(!f.length) return;
+    total+=f.length;
+    const gc=grupoColors[g];
+    const lbl=document.createElement("div");lbl.className="slabel";
+    lbl.innerHTML=`<div class="slabel-inner"><span class="sdot" style="background:${gc}"></span><span class="stxt" style="color:${gc}">${g}</span><span class="scnt">${f.length} carta${f.length!==1?"s":""}</span></div>`;
+    out.appendChild(lbl);
+    const grid=document.createElement("div");grid.className="grid"+(viewMode==="lv"?" lv":"");
+    f.forEach((c,i)=>grid.appendChild(makeCard(c,Math.min(i*0.03,0.3))));
+    out.appendChild(grid);
+  });
+
+  if(!total){
+    const g=document.createElement("div");g.className="grid";
+    g.innerHTML=`<div class="empty"><div class="empty-ico">&#127183;</div><p>Nenhuma carta corresponde a "${q}"</p></div>`;
+    out.appendChild(g);
+  }
+  document.getElementById("countPill").textContent=`A mostrar ${total} carta${total!==1?"s":""}`;
+  updateStats();
+}
+
+function updateStats(){
+  const t=cards.length, n=owned.size, pct=t>0?Math.round(n/t*100):0;
+  const sets=new Set(cards.map(c=>c.set)).size;
+  document.getElementById("statOwned").textContent=n;
+  document.getElementById("statTotal").textContent=t;
+  document.getElementById("statPct").textContent=pct+"%";
+  document.getElementById("statSets").textContent=sets;
+}
+
+function setView(mode){
+  viewMode=mode;
+  document.getElementById("gridViewBtn").classList.toggle("active",mode==="grid");
+  document.getElementById("listViewBtn").classList.toggle("active",mode==="lv");
+  render();
+}
+
+const filtersEl=document.getElementById("filters");
+grupoFilters.forEach(g=>{
+  const btn=document.createElement("button");
+  btn.className="fbtn"+(g==="Todas"?" active":"");
+  btn.textContent=g;
+  btn.addEventListener("click",()=>{
+    activeGrupo=g;
+    document.querySelectorAll(".fbtn").forEach(b=>b.classList.remove("active"));
+    btn.classList.add("active");
+    render();
+  });
+  filtersEl.appendChild(btn);
+});
+
+document.getElementById("gridViewBtn").addEventListener("click",()=>setView("grid"));
+document.getElementById("listViewBtn").addEventListener("click",()=>setView("lv"));
+document.getElementById("search").addEventListener("input",render);
+
+updateStats();render();
+</script>
+
+</body>
+</html>

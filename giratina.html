@@ -117,6 +117,11 @@ input[type="text"]::placeholder{color:var(--muted);}
 .right-controls{display:flex;align-items:center;gap:0.6rem;}
 .cpill{font-size:0.78rem;color:var(--muted);}
 .vtog{display:flex;gap:0.3rem;}
+.ownfilter{display:flex;gap:0.3rem;}
+.ownfilter-btn{background:var(--panel);border:1px solid var(--border2);border-radius:6px;color:var(--muted);cursor:pointer;
+  padding:0.3rem 0.7rem;font-size:0.76rem;font-family:"EB Garamond",serif;font-weight:600;transition:all .15s;white-space:nowrap;}
+.ownfilter-btn:hover{border-color:var(--coin-gold);color:var(--parchment);}
+.ownfilter-btn.active{background:var(--coin-gold);border-color:var(--coin-gold);color:var(--ink-black);}
 .vbtn{background:var(--panel);border:1px solid var(--border2);border-radius:6px;color:var(--muted);cursor:pointer;
   width:30px;height:30px;display:flex;align-items:center;justify-content:center;font-size:0.85rem;transition:all .15s;}
 .vbtn.active{background:var(--coin-gold);border-color:var(--coin-gold);color:var(--ink-black);}
@@ -230,6 +235,11 @@ footer .legal{margin-top:0.6rem;color:#5a4d33;}
     <div class="frow" id="filters"></div>
     <div class="right-controls">
       <span class="cpill" id="countPill">A mostrar 0 cartas</span>
+      <div class="ownfilter">
+        <button class="ownfilter-btn active" data-owned="todas">Todas</button>
+        <button class="ownfilter-btn" data-owned="tenho">Tenho</button>
+        <button class="ownfilter-btn" data-owned="falta">Em falta</button>
+      </div>
       <div class="vtog">
         <button class="vbtn active" id="gridViewBtn" title="Vista em grelha">&#9638;</button>
         <button class="vbtn" id="listViewBtn" title="Vista em lista">&#9776;</button>
@@ -291,12 +301,11 @@ const cards=[
   {id:"gir-bw74", grupo:"Giratina", name:"Giratina", set:"Black & White Promos", num:"BW74", rarity:"Promo", col:"#14b8a6", localImg:"imgs/gir-bw74.jpg"},
   {id:"gir-sm151", grupo:"Giratina", name:"Giratina", set:"SM Black Star Promos", num:"SM151", rarity:"Promo", col:"#14b8a6", localImg:"imgs/gir-sm151.jpg"},
   {id:"gir-kor-playingcard-0", grupo:"Outros Coleccionáveis", name:"Giratina (Origin Forme) — baralho de cartas", set:"Pokémon Playing Cards 2020s (Coreia) — Ninety-Nine, carta \"0\"", num:"—", rarity:"Produto colecionável (não é TCG)", col:"#8b5cf6", localImg:"imgs/gir-kor-playingcard-0.jpg"},
-  {id:"girvstar-wc2024-006", grupo:"Giratina VSTAR", name:"Giratina VSTAR", set:"World Championship Deck 2024 (Regidrago VSTAR) — mesma frente da Lost Origin 131/196", num:"No.006", rarity:"Promo", col:"#f43f5e", localImg:"imgs/swsh11-131_hires.png"},
 ];
 
 const grupoColors={"Giratina":"#14b8a6","Giratina LV.X":"#a78bfa","Giratina-EX":"#ec4899","Giratina ♢":"#fbbf24","Garchomp & Giratina-GX":"#fb923c","Giratina V":"#38bdf8","Giratina VSTAR":"#f43f5e","Outros Coleccionáveis":"#8b5cf6"};
 const grupoFilters=["Todas","Giratina","Giratina LV.X","Giratina-EX","Giratina ♢","Garchomp & Giratina-GX","Giratina V","Giratina VSTAR","Outros Coleccionáveis"];
-let activeGrupo="Todas", viewMode="grid";
+let activeGrupo="Todas", viewMode="grid", ownedFilter="todas";
 const STORAGE_KEY="pkmn_giratina_owned";
 const owned=new Set(JSON.parse(localStorage.getItem(STORAGE_KEY)||"[]"));
 
@@ -351,7 +360,7 @@ function makeCard(data,delay){
     if(owned.has(data.id)){owned.delete(data.id);ownBtn.classList.remove("owned");card.classList.remove("owned");}
     else{owned.add(data.id);ownBtn.classList.add("owned");card.classList.add("owned");}
     localStorage.setItem(STORAGE_KEY,JSON.stringify([...owned]));
-    updateStats();
+    if(ownedFilter!=="todas"){render();}else{updateStats();}
   });
   imgArea.appendChild(ownBtn);
   card.appendChild(imgArea);
@@ -375,7 +384,7 @@ function render(){
   let total=0;
 
   grupos.forEach(g=>{
-    const f=cards.filter(c=>c.grupo===g && (!q || c.name.toLowerCase().includes(q) || c.set.toLowerCase().includes(q) || c.num.includes(q) || c.rarity.toLowerCase().includes(q)));
+    const f=cards.filter(c=>c.grupo===g && (!q || c.name.toLowerCase().includes(q) || c.set.toLowerCase().includes(q) || c.num.includes(q) || c.rarity.toLowerCase().includes(q)) && (ownedFilter==="todas" || (ownedFilter==="tenho"&&owned.has(c.id)) || (ownedFilter==="falta"&&!owned.has(c.id))));
     if(!f.length) return;
     total+=f.length;
     const gc=grupoColors[g];
@@ -429,6 +438,15 @@ grupoFilters.forEach(g=>{
 document.getElementById("gridViewBtn").addEventListener("click",()=>setView("grid"));
 document.getElementById("listViewBtn").addEventListener("click",()=>setView("lv"));
 document.getElementById("search").addEventListener("input",render);
+
+document.querySelectorAll(".ownfilter-btn").forEach(b=>{
+  b.addEventListener("click",()=>{
+    ownedFilter=b.dataset.owned;
+    document.querySelectorAll(".ownfilter-btn").forEach(x=>x.classList.remove("active"));
+    b.classList.add("active");
+    render();
+  });
+});
 
 updateStats();render();
 </script>
